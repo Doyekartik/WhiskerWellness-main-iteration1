@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module">
+      // Import Firebase authentication
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+      import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyC2cgjpY5USWqV_t8Djkofy-hh2v4HGiHw",
+        authDomain: "whiskerwellness-4043a.firebaseapp.com",
+        projectId: "whiskerwellness-4043a",
+        storageBucket: "whiskerwellness-4043a.firebasestorage.app",
+        messagingSenderId: "723015459568",
+        appId: "1:723015459568:web:4b47f1746e468df2945835",
+        measurementId: "G-617PKXR4Q7"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      let authInitialized = false;
+
+      // Check authentication state
+      onAuthStateChanged(auth, (user) => {
+        if (authInitialized) {
+          if (!user) {
+            window.location.href = 'index.html';
+          }
+        }
+        authInitialized = true;
+      });
+
+      // Handle sign out
+      document.addEventListener('DOMContentLoaded', () => {
+        const signOutLink = document.createElement('a');
+        signOutLink.href = '#';
+        signOutLink.textContent = 'Sign Out';
+        signOutLink.style.position = 'absolute';
+        signOutLink.style.top = '20px';
+        signOutLink.style.right = '20px';
+        signOutLink.style.padding = '10px 20px';
+        signOutLink.style.backgroundColor = '#000';
+        signOutLink.style.color = '#fff';
+        signOutLink.style.borderRadius = '5px';
+        signOutLink.style.textDecoration = 'none';
+        signOutLink.style.cursor = 'pointer';
+        signOutLink.style.zIndex = '1000';
+
+        signOutLink.addEventListener('click', async (e) => {
+          e.preventDefault();
+          try {
+            await signOut(auth);
+            window.location.href = 'index.html';
+          } catch (error) {
+            console.error('Sign out error:', error);
+            alert('Error signing out. Please try again.');
+          }
+        });
+
+        document.body.appendChild(signOutLink);
+      });
+    </script>
+    <title>Pet Profile</title>
+    <meta property="og:title" content="Pet Profile" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        -webkit-font-smoothing: antialiased;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        -ms-appearance: button;
+        appearance: button;
+        color: inherit;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Karla;
+        font-size: 16px;
+      }
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background: var(--dl-color-gray-white);
+        fill: var(--dl-color-gray-black);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      data-tag="font"
+    />
+    
+    <style>
+      /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Chatbot container */
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  height: 400px;
+  background: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  z-index: 100;
+}
+
+/* Header */
+#chat-header {
+  background-color: #000000;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+}
+
+/* Chat messages */
+#chat-log {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* Chat input area */
+#chat-input-area {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+#send-btn {
+  background-color: #850000;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Chat bubbles */
+.user-message, .bot-message {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.user-message {
+  background-color: #DCF8C6;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bot-message {
+  background-color: #E6E6E6;
+  align-self: flex-start;
+  text-align: left;
+}
+
+      .pet-profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .pet-profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .pet-profile-header h1 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .pet-info-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .pet-info-card {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+      .pet-info-card h3 {
+        color: #666;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+      .pet-info-card p {
+        font-size: 1.2em;
+        color: #333;
+        font-weight: 500;
+      }
+      .pet-image-section {
+        text-align: center;
+        margin: 30px 0;
+      }
+      .pet-image-section {
+  position: relative; /* Important: to position the background circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.pet-image-background {
+  width: 220px; /* Slightly bigger than the pet image */
+  height: 220px;
+  background-color: #f0f0f0; /* Light gray or any color you want */
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.pet-image-section img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2; /* To keep the image above the background circle */
+}
+
+
+      .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+      .nav-button {
+        padding: 10px 20px;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1em;
+      }
+      .nav-button:hover {
+        background-color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pet-profile-container">
+      <div class="pet-profile-header">
+        <h1>Your Pet's Profile</h1>
+        <p>Here's what we know about your furry friend!</p>
+      </div>
+
+      <div class="pet-image-section">
+        <div class="pet-image-background"></div> <!-- This is the bigger circle -->
+        <img id="petImage" src="" alt="Pet Image" style="display: none;">
+      </div>
+      
+      <div class="pet-info-section">
+        <div class="pet-info-card">
+          <h3>Name</h3>
+          <p id="petName">Loading...</p>
+        </div>
+        <div class="pet-info-card">
+          <h3>Type</h3>
+          <p id="petType">Loading...</p>
+        </div>
+        <div class="pet-info-card">
+          <h3>Breed</h3>
+          <p id="petBreed">Loading...</p>
+        </div>
+        <div class="pet-info-card">
+          <h3>Age</h3>
+          <p id="petAge">Loading...</p>
+        </div>
+        <div class="pet-info-card">
+          <h3>Color</h3>
+          <p id="petColor">Loading...</p>
+        </div>
+        <div class="pet-info-card">
+          <h3>Weight</h3>
+          <p id="petWeight">Loading...</p>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <a href="index copy1.html" class="nav-button">Back to Quiz</a>
+        <a href="#" class="nav-button" id="nextPage">Next</a>
+      </div>
+    </div>
+    <div id="chatbot">
+      <div id="chat-header">WhiskerBot 🐾</div>
+      <div id="chat-log"></div>
+      <div id="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Ask me about your pet's health..." />
+        <button id="send-btn">Send</button>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+  const sendBtn = document.getElementById('send-btn');
+  const chatInput = document.getElementById('chat-input');
+  const chatLog = document.getElementById('chat-log');
+
+  sendBtn.addEventListener('click', () => {
+    const userMessage = chatInput.value.trim();
+    if (userMessage) {
+      addMessage(userMessage, 'user-message');
+      getBotResponse(userMessage);
+      chatInput.value = '';
+    }
+  });
+
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendBtn.click();
+  });
+
+  function addMessage(message, className) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = className;
+    msgDiv.textContent = message;
+    chatLog.appendChild(msgDiv);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  async function getBotResponse(userInput) {
+    addMessage("Typing...", 'bot-message');
+
+    try {
+      const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+        model: "gpt-3.5-turbo", // Or "gpt-4" if you have access
+        messages: [{ role: "user", content: userInput }],
+        max_tokens: 150,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer sk-proj-cQdNOuJeNusQFOCl-ISuKnRf7A26TtWOCfN7I7v3bq1T42YalUmNQo-n7dmVjLN4GD8N_AxfBp31qoBtBfXtkJrzzjYyYCNuvd6fftXhTtTehc1gMRk_afwBmoG1JCOIS8vaPaVRsBYl7ol5MnW6LEHpjU4A` // <-- Replace with your API key
+        }
+      });
+
+      // Remove "Typing..." before showing real response
+      chatLog.removeChild(chatLog.lastChild);
+
+      const botReply = response.data.choices[0].message.content.trim();
+      addMessage(botReply, 'bot-message');
+    } catch (error) {
+      console.error(error);
+      chatLog.removeChild(chatLog.lastChild);
+      addMessage("Oops! Something went wrong. Please try again.", 'bot-message');
+    }
+  }
+});
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+  // Debug function to check localStorage
+  function checkLocalStorage() {
+    console.log("LocalStorage contents:");
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      console.log(`${key}: ${localStorage.getItem(key)}`);
+    }
+  }
+  
+  checkLocalStorage();
+  
+  // Get all pet information from localStorage with proper error handling
+  const petName = localStorage.getItem('petName') || 'Not provided';
+  const petType = localStorage.getItem('petType') || 'Not provided';
+  const petBreed = localStorage.getItem('petBreed') || 'Not provided';
+  const petAge = localStorage.getItem('petAge') || 'Not provided';
+  const petColor = localStorage.getItem('petColor') || 'Not provided';
+  const petWeight = localStorage.getItem('petWeight') || 'Not provided';
+  const uploadedPhoto = localStorage.getItem('petPhoto');
+
+  // Update the page with the pet information
+  document.getElementById('petName').textContent = petName !== 'null' ? petName : 'Not provided';
+  document.getElementById('petType').textContent = petType !== 'null' ? petType : 'Not provided';
+  document.getElementById('petBreed').textContent = petBreed !== 'null' ? petBreed : 'Not provided';
+  document.getElementById('petAge').textContent = petAge !== 'null' ? `${petAge} years` : 'Not provided';
+  document.getElementById('petColor').textContent = petColor !== 'null' ? petColor : 'Not provided';
+  document.getElementById('petWeight').textContent = petWeight !== 'null' ? `${petWeight} lbs` : 'Not provided';
+
+  // Set pet image
+  const petImage = document.getElementById('petImage');
+  if (uploadedPhoto) {
+    petImage.src = uploadedPhoto;
+    petImage.style.display = 'block';
+  } else if (petType && petType.toLowerCase() === 'cat') {
+    petImage.src = 'public/cat-placeholder.jpg';
+    petImage.style.display = 'block';
+  } else if (petType && petType.toLowerCase() === 'dog') {
+    petImage.src = 'public/dog-placeholder.jpg';
+    petImage.style.display = 'block';
+  }
+
+  // Add click handler for next button
+  document.getElementById('nextPage').addEventListener('click', function(e) {
+    e.preventDefault();
+    // You can add the next page URL here
+    // window.location.href = 'next-page.html';
+  });
+});
+
+    </script>
+  </body>
+</html>

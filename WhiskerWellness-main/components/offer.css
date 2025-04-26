@@ -1,0 +1,22 @@
+.offer-offer {
+  gap: var(--dl-layout-space-oneandhalfunits);
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+ 
+.offer-content {
+  gap: var(--dl-layout-space-oneandhalfunits);
+  display: flex;
+  flex-direction: column;
+}
+ 
+.offer-details {
+  gap: var(--dl-layout-space-unit);
+  flex: 1;
+  border: 2px dashed rgba(120, 120, 120, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

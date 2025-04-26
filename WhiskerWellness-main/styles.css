@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Traveler template</title>
+    <meta property="og:title" content="Traveler template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        -webkit-font-smoothing: antialiased;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+        color: inherit;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      details {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      [data-thq="accordion"] [data-thq="accordion-content"] {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        padding: 0;
+      }
+      [data-thq="accordion"] details[data-thq="accordion-trigger"][open] +
+        [data-thq="accordion-content"] {
+        max-height: 1000vh;
+      }
+      details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {
+        transform: rotate(180deg);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Karla;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background: var(--dl-color-gray-white);
+
+        fill: var(--dl-color-gray-black);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+    <style>
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+        display: flex;
+      }
+
+      [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+        transform: rotate(90deg);
+      }
+
+      .button-option.clicked {
+        background-color: #d22500;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+      <div class="home-container1">
+        <section class="home-hero">
+          <div class="home-main1">
+            <div class="home-video">
+              <img
+                src="public/whiskerwellness-900h.png"
+                alt="image"
+                class="home-image"
+              />
+            </div>
+            <div class="home-content">
+              <header class="home-header1">
+                <header data-thq="thq-navbar" class="home-navbar">
+                  <div class="home-container2">
+                    <div data-thq="thq-burger-menu" class="home-menu">
+                      <button class="home-hamburger button">
+                        <svg viewBox="0 0 1024 1024" class="home-icon10">
+                          <path
+                            d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+                          ></path></svg></button>
+                    </div>
+                    <div class="home-links">
+                      <span class="home-text10 link">Home</span>
+                      <span class="home-text11 link">My profile</span>
+                      <a href="aboutus.html" class="home-text13 link">About</a>
+                      <a href="contact.html" class="home-text13 link">Contact</a>
+                    </div>
+                    <div data-thq="thq-mobile-menu" class="home-mobile-menu">
+                      <div
+                        data-thq="thq-mobile-menu-nav"
+                        data-role="Nav"
+                        class="home-nav1"
+                      >
+                        <div class="home-container3">
+                          <img
+                            alt="logo"
+                            src="public/logo.svg"
+                            class="home-logo"
+                          />
+                          <div
+                            data-thq="thq-close-menu"
+                            class="home-menu-close"
+                          >
+                            <svg viewBox="0 0 1024 1024" class="home-icon12">
+                              <path
+                                d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                              ></path></svg>
+                          </div>
+                        </div>
+                        <nav
+                          data-thq="thq-mobile-menu-nav-links"
+                          data-role="Nav"
+                          class="home-nav2"
+                        >
+                          <span class="home-text14">About</span>
+                          <span class="home-text15">Features</span>
+                          <span class="home-text16">Pricing</span>
+                          <span class="home-text17">Team</span>
+                          <span class="home-text18">Blog</span>
+                        </nav>
+                        <div class="home-container4">
+                          <button class="home-login button">Login</button>
+                          <button class="button">Register</button>
+                        </div>
+                      </div>
+                      <div class="home-icon-group">
+                        <svg
+                          viewBox="0 0 950.8571428571428 1024"
+                          class="home-icon14"
+                        >
+                          <path
+                            d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                          ></path></svg>
+                        <svg
+                          viewBox="0 0 877.7142857142857 1024"
+                          class="home-icon16"
+                        >
+                          <path
+                            d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+                          ></path></svg>
+                        <svg
+                          viewBox="0 0 602.2582857142856 1024"
+                          class="home-icon18"
+                        >
+                          <path
+                            d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+                          ></path></svg>
+                      </div>
+                    </div>
+                  </div>
+                </header>
+              </header>
+              <div class="home-center">
+                <div class="home-heading1">
+                  <h1 class="home-header2">For Animals By Primates</h1>
+                  <p class="home-caption1">
+                    Caring for your pet has never been easier! WhiskerWellness is
+                    your all-in-one companion for tracking your pet's health
+                  </p>
+                </div>
+                <div class="home-border">
+                  <div class="home-filter">
+                    <button type="button" class="home-button button">
+                      Get Started
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="tours" class="home-quick-view">
+          <h2 class="home-header3">Okay, lets start by a small quiz</h2>
+          <p class="home-caption2">
+            Answer these simple questions so that we can understand your pet
+            better
+          </p>
+          <div class="home-heading2"></div>
+          <span class="home-text19">I Have Adopted a&nbsp;</span>
+          <div class="home-main2">
+            <button class="button-option button cat-button">Cat</button>
+            <button class="home-option11 button-option button dog-button">Dog</button> 
+          </div>
+          <div class="home-heading3"></div>
+          <span class="home-text20">The Breed of my pet is&nbsp;</span>
+          <div class="home-container5">
+            <div class="home-sorting2">
+              <button class="button-option button">German Shepherd</button>
+              <button class="home-option13 button-option button">Beagle</button>
+            </div>
+          </div>
+          <div class="home-main3">
+            <div class="home-sorting3">
+              <button class="button-option button">Dachshund</button>
+              <button class="button-option button">
+                <span>Labrador Retriever </span>Dachshund
+              </button>
+              <button class="home-option16 button-option button">
+                <span><span>French Bulldog</span><br /></span>Dachshund
+              </button>
+            </div>
+          </div>
+          <div class="home-heading4"></div>
+          <span class="home-text25">Age of my pet is&nbsp;</span>
+          <input
+            type="text"
+            placeholder="Enter the Age ex. 1-20"
+            class="home-textinput1 input"
+          />
+          <div
+            data-thq="thq-dropdown"
+            class="home-thq-dropdown1 list-item"
+          >
+            <ul data-thq="thq-dropdown-list" class="home-dropdown-list1">
+              <li data-thq="thq-dropdown" class="home-dropdown1 list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle1"
+                >
+                  <span class="home-text26">Sub-menu Item</span>
+                </div>
+              </li>
+              <li data-thq="thq-dropdown" class="home-dropdown2 list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle2"
+                >
+                  <span class="home-text27">Sub-menu Item</span>
+                </div>
+              </li>
+              <li data-thq="thq-dropdown" class="home-dropdown3 list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle3"
+                >
+                  <span class="home-text28">Sub-menu Item</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="home-heading5"></div>
+          <span class="home-text29">The color of my pet is</span>
+          <div class="home-main4">
+            <div class="home-sorting4">
+              <button class="button-option button">White</button>
+              <button class="button-option button">
+                <span>Black </span>Dachshund
+              </button>
+              <button class="button-option button">
+                <span><span>Spotty</span><br /></span>Dachshund
+              </button>
+            </div>
+          </div>
+          <div class="home-heading6"></div>
+          <span class="home-text34">Weight of pet is&nbsp;</span>
+          <input
+            type="text"
+            placeholder="Weight (pounds)"
+            class="home-textinput2 input"
+          />
+          <div class="home-heading7"></div>
+          <span class="home-text35">Name of pet is&nbsp;</span>
+          <input
+            type="text"
+            placeholder="Enter the name"
+            class="home-textinput3 input"
+          />
+          <div
+            data-thq="thq-dropdown"
+            class="home-thq-dropdown2 list-item"
+          >
+            <ul data-thq="thq-dropdown-list" class="home-dropdown-list2">
+              <li data-thq="thq-dropdown" class="home-dropdown4 list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle4"
+                >
+                  <span class="home-text36">Sub-menu Item</span>
+                </div>
+              </li>
+              <li data-thq="thq-dropdown" class="home-dropdown5 list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle5"
+                >
+                  <span class="home-text37">Sub-menu Item</span>
+                </div>
+              </li>
+              <li data-thq="thq-dropdown" class="home-dropdown6 list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle6"
+                >
+                  <span class="home-text38">Sub-menu Item</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="home-pagination">
+            <button class="home-previous button-option button">
+              <svg viewBox="0 0 1024 1024" class="home-icon20">
+                <path
+                  d="M658 708l-60 60-256-256 256-256 60 60-196 196z"
+                ></path></svg
+              ><span class="home-text39">Previous</span>
+            </button>
+            <div class="home-pages">
+              <img
+                alt="image"
+                src="public/Icons/more.svg"
+                class="home-more"
+              />
+              <div class="home-primary">
+                <div class="home-number-current page-current page">
+                  <span class="home-text40">1</span>
+                </div>
+                <div class="page"><span class="home-text41">2</span></div>
+              </div>
+            </div>
+            <button class="home-next button-option button">
+              <span class="home-text42">Next</span>
+              <svg viewBox="0 0 1024 1024" class="home-icon22">
+                <path
+                  d="M426 256l256 256-256 256-60-60 196-196-196-196z"
+                ></path></svg></button>
+          </div>
+          <div data-thq="slider-wrapper" class="swiper-wrapper"></div>
+        </section>
+        <section class="home-footer"></section>
+        <div>
+          <div class="home-container7">
+            <script>
+              function initAccordion() {
+                /*
+                 Accordion - Code Embed
+                 */
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+  </body>
+</html>

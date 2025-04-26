@@ -1,0 +1,30 @@
+{
+  "name": "traveler-template",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
+    "next": "^12.1.10",
+    "parcel-bundler": "^1.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {},
+  "main": "script.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prajxal/WhiskerWellness.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prajxal/WhiskerWellness/issues"
+  },
+  "homepage": "https://github.com/prajxal/WhiskerWellness#readme",
+  "description": ""
+}
